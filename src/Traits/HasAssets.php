@@ -291,7 +291,7 @@ trait HasAssets
         }
 
         static::$manifestData = json_decode(
-            file_get_contents(public_path(static::$manifest)),
+            file_get_contents(asset(static::$manifest)),
             true
         );
 
@@ -303,7 +303,7 @@ trait HasAssets
      */
     protected static function getMinifiedCss()
     {
-        if (!config('admin.minify_assets') || !file_exists(public_path(static::$manifest))) {
+        if (!config('admin.minify_assets')) {
             return false;
         }
 
@@ -315,7 +315,7 @@ trait HasAssets
      */
     protected static function getMinifiedJs()
     {
-        if (!config('admin.minify_assets') || !file_exists(public_path(static::$manifest))) {
+        if (!config('admin.minify_assets')) {
             return false;
         }
 
